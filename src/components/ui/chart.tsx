@@ -170,6 +170,7 @@ const ChartTooltipContent = React.forwardRef<
     }
 
     const nestLabel = payload.length === 1 && indicator !== "dot"
+    const indicatorType = indicator as "line" | "dot" | "dashed"
 
     return (
       <div
@@ -254,7 +255,7 @@ const ChartTooltipContent = React.forwardRef<
             <div
               className={cn(
                 "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
-                indicator === "dot" && "items-center"
+                indicatorType === "dot" ? "items-center" : ""
               )}
             >
               {formatter && typeof payload[0]?.value !== "undefined" ? (
